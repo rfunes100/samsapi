@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema; // Asegúrate de agregar esta línea
+
 
 const movimientoSchema = new mongoose.Schema({
   idvehiculo: {
-    type: String,
- //   type: Schema.Types.ObjectId,
-   // ref: 'Vehiculo',
+ //   type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Vehiculo',
     required: true
   },
   tipomovimiento: {

@@ -9,13 +9,24 @@ const Movimiento = require('../models/Movimiento');
 // Obtener todos los vehículos
 router.get('/', async (req, res) => {
   try {
+      const movimientos = await Movimiento.find().populate('idvehiculo').exec();
+      res.json(movimientos);
+  } catch (error) {
+      console.error('Error fetching movements:', error);
+      res.status(500).send('Server error');
+  }
+});
+
+
+/* router.get('/', async (req, res) => {
+  try {
     const vehiculoss = await Movimiento.find();
     console.log('Movimiento',vehiculoss)
     res.json(vehiculoss);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-});
+}); */
 
 // Crear un nuevo vehículo
 router.post('/', async (req, res) => {
